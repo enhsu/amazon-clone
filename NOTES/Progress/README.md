@@ -51,6 +51,7 @@
    1. Now the Header component should look like [this](./components/Header.SignIn.tsx)
 
 1. Build Cart function
+
    1. Define the goal
       1. After click the `Cart` at Header, go to `checkout page`
       1. We need `Redux` to handle the global store
@@ -66,3 +67,7 @@
       - Reuse component [Rating](./components/Rating.init.tsx) & [Prime](./components/Prime.init.tsx)
    1. Also update the [cartReducer](./store/slices/cartSlice.new.add.and.remove.ts), update `addToCart(with count)` & `removeFromCart`
    1. According to the `cartReducer` updated, [Product](./components/Product.reuse.rating.and.prime.tsx) need to be updated
+
+1. Handle Vercel deployment
+   1. Add `secret` in [[...nextauth.ts]](./pages/api/auth/%5B...nextauth%5D.add.secret.ts)
+   1. Add domain in GCP OAuth 2.0 Client IDs
