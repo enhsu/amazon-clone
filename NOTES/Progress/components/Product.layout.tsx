@@ -1,34 +1,27 @@
 import Image from "next/image";
 import { useState } from "react";
+import { AiFillStar } from "react-icons/ai";
 import Currency from "react-currency-formatter";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { addToCart } from "~/store/slices/cartSlice";
-import Rating from "~/components/Rating";
-import Prime from "./Prime";
 
-export type Rating = {
+export interface IRating {
   rate: number;
   count: number;
-};
+}
 
-export type Product = {
+export interface IProduct {
   id: number;
   title: string;
   price: number;
   description: string;
   category: string;
   image: string;
-  rating: Rating;
-};
+  rating: IRating;
+}
 
-export type PropsType = Omit<Product, "rating">;
-
-export type AddProduct = PropsType & {
-  count: number;
-  rating: number;
-  hasPrime: boolean;
-};
+export interface IProductProps extends Omit<IProduct, "rating"> {
+  rating?: IRating;
+}
 
 const MAX_RATING: number = 5;
 const MIN_RATING: number = 1;
@@ -40,11 +33,9 @@ export default function Product({
   description,
   category,
   image,
-}: PropsType) {
-  const [count, setCount] = useState<number>(1);
+}: IProductProps) {
   const [rating, setRating] = useState<number>(0);
   const [hasPrime, setHasPrime] = useState<boolean>(false);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     setRating(
@@ -52,22 +43,6 @@ export default function Product({
     );
     setHasPrime(Math.random() < 0.5);
   }, []);
-
-  const addItemToCart = () => {
-    const product = {
-      id,
-      count,
-      title,
-      price,
-      description,
-      category,
-      image,
-      rating,
-      hasPrime,
-    };
-
-    dispatch(addToCart(product));
-  };
 
   return (
     <div className=" flex flex-col m-5 p-10 z-30 bg-white  relative">
@@ -82,18 +57,30 @@ export default function Product({
         objectFit="contain"
       />
       <h4 className=" my-3">{title}</h4>
-      <Rating rating={rating} />
+      <div className=" flex">
+        {Array(rating)
+          .fill(0)
+          .map((_, i) => (
+            <AiFillStar key={`${i}start`} className=" h-5 text-yellow-500" />
+          ))}
+      </div>
       <p className=" my-2 text-xs line-clamp-2">{description}</p>
 
       <div className=" mb-5">
         <Currency quantity={price} currency="USD" />
       </div>
 
-      {hasPrime && <Prime />}
+      {hasPrime && (
+        <div className=" flex items-center space-x-2 -mt-5">
+          <picture className=" w-12">
+            <source srcSet="/prime-tag.png" />
+            <img src="/prime-tag.png" alt="prime tag" />
+          </picture>
+          <p className=" text-xs text-gray-500">FREE Next-day Delivery</p>
+        </div>
+      )}
 
-      <button onClick={() => addItemToCart()} className=" mt-auto button">
-        Add to Cart
-      </button>
+      <button className=" mt-auto button">Add to Cart</button>
     </div>
   );
 }

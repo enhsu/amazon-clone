@@ -3,6 +3,7 @@
 ## set up
 
 - [Redux quick start](https://redux.js.org/tutorials/quick-start)
+- [Redux with typescript](https://redux.js.org/usage/usage-with-typescript)
 
 ## chrome dev tools
 

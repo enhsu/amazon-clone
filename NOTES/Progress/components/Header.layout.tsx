@@ -4,16 +4,8 @@ import {
   AiOutlineShoppingCart,
   AiOutlineMenu,
 } from "react-icons/ai";
-import { signIn, signOut, useSession } from "next-auth/react";
-import { useRouter } from "next/router";
-import { useSelector } from "react-redux";
-import { selectItems } from "~/store/slices/cartSlice";
 
 const Header = () => {
-  const { data: session } = useSession();
-  const router = useRouter();
-  const items = useSelector(selectItems);
-
   return (
     <header className=" bg-gray-400">
       {/* Top nav */}
@@ -21,7 +13,6 @@ const Header = () => {
         {/* Icon */}
         <div className=" flex items-center flex-grow mt-2 sm:flex-grow-0">
           <Image
-            onClick={() => router.push("/")}
             src="/amazon-logo-white-text.png"
             alt="amazon icon"
             width={150}
@@ -43,17 +34,8 @@ const Header = () => {
         {/* Account & Orders & Cart */}
         <div className=" flex items-center text-white text-xs space-x-6 mx-6 whitespace-nowrap">
           {/* Account */}
-          <div
-            className="link"
-            onClick={() => {
-              if (!session) {
-                signIn();
-              } else {
-                signOut();
-              }
-            }}
-          >
-            <p>{session ? `Hello, ${session.user?.name}` : "Sign In"}</p>
+          <div className="link">
+            <p>Hello User</p>
             <p className=" font-extrabold md:text-sm">Account &amp; List</p>
           </div>
           {/* Orders */}
@@ -62,12 +44,9 @@ const Header = () => {
             <p className=" font-extrabold md:text-sm"> &amp; Orders</p>
           </div>
           {/* Cart */}
-          <div
-            onClick={() => router.push("/checkout")}
-            className=" relative flex items-center link"
-          >
+          <div className=" relative flex items-center link">
             <span className=" absolute top-0 -right-1 md:right-6 h-4 w-4 bg-yellow-400 text-center text-black font-bold rounded-full">
-              {items.length}
+              4
             </span>
             <AiOutlineShoppingCart className=" w-10 h-10" />
             <p className=" hidden md:inline mt-7 font-extrabold md:text-sm">

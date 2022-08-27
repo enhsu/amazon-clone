@@ -1,11 +1,11 @@
-import type { Product as ProductType } from "~/components/Product";
+import type { IProduct } from "~/components/Product";
 import Product from "~/components/Product";
 
-type PropsType = {
-  products: ProductType[];
-};
+export interface IProductFeedProps {
+  products: IProduct[];
+}
 
-export default function ProductFeed({ products }: PropsType) {
+export default function ProductFeed({ products }: IProductFeedProps) {
   return (
     <div className=" grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:-mt-48 mx-auto">
       {products
