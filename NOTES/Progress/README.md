@@ -113,3 +113,21 @@
       - use [Moment.js](https://momentjs.com/docs/#/displaying/format/) for timestamp
       - [firebase version 9, map snapshot](https://stackoverflow.com/questions/72070501/problem-while-upgrading-a-code-snippet-from-firebase-v8-to-firebase-v9)
       - [firebase, use asnyc with map](https://stackoverflow.com/questions/53149138/use-async-foreach-loop-while-fetching-data-from-firestore)
+1. Deploy on [Versel](https://vercel.com/)
+   - Setup .env.local variable in `Versel`. In this project we should have
+     - NEXTAUTH_SECRET
+     - GOOGLE_CLIENT_ID
+     - GOOGLE_CLIENT_SECRET
+     - GITHUB_ID
+     - GITHUB_SECRET
+     - STRIPE_PUBLIC_KEY
+     - STRIPE_SECRET_KEY
+     - STRIPE_SIGNING_SECRET
+     - SERVICE_ACCOUNT_KEY
+     - FIREBSE_CONFIG
+     - HOST
+   - Build `STRIPE_SIGNING_SECRET`
+     1. Go to [Stripe]() > `Developers` > `Webhooks` > `Add an endpoint`
+     1. `Endpoint URL`, fill up with `${HOST}/api/${webhook_api_path}`
+     1. `Events to send` > select `checkout.session.completed`
+     1. Copy the Signing secret to `STRIPE_SIGNING_SECRET`
