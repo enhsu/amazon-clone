@@ -76,17 +76,23 @@ function CheckoutProduct({
       {/* Right: Add & Remove */}
       <div className=" flex flex-col space-y-2 my-auto justify-self-center">
         <div className=" flex">
-          <div onClick={() => handleUpdateQuantity(quantity + addQuantity - 1)}>
+          <div
+            className=" cursor-pointer"
+            onClick={() => handleUpdateQuantity(quantity + addQuantity - 1)}
+          >
             -
           </div>
           <input
             type="number"
-            className=" flex-grow text-center"
+            className=" flex-grow text-center focus:outline-none"
             onChange={(e) => handleInputOnChange(e)}
             value={quantity + addQuantity}
           />
 
-          <div onClick={() => handleUpdateQuantity(quantity + addQuantity + 1)}>
+          <div
+            className=" cursor-pointer"
+            onClick={() => handleUpdateQuantity(quantity + addQuantity + 1)}
+          >
             +
           </div>
         </div>

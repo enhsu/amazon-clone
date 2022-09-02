@@ -53,7 +53,7 @@ const Header = () => {
               }
             }}
           >
-            <p>{session ? `Hello, ${session.user?.name}` : "Sign In"}</p>
+            <p>{session ? `Hello, ${session.user?.name}` : "Hello there"}</p>
             <p className=" font-extrabold md:text-sm">
               {!session ? "SignIn" : "SignOut"}
             </p>
@@ -64,8 +64,8 @@ const Header = () => {
               onClick={() => session && router.push("/user/orders")}
               className="link"
             >
-              <p>Returns</p>
-              <p className=" font-extrabold md:text-sm"> &amp; Orders</p>
+              <p>Go to</p>
+              <p className=" font-extrabold md:text-sm">Orders</p>
             </div>
           )}
 

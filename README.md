@@ -59,6 +59,8 @@ Variables in .env.local
 
 ## Next steps
 
+- Keep `Cart` data after SignIn
+- More `Orders` detail
 - Upload product by user
 - Authenticated routing
 - Unit test
