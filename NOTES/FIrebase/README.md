@@ -1,33 +1,13 @@
 # Firebase
 
-- [Firebase official docs - web setup](https://firebase.google.com/docs/web/setup)
+- [Firebase setting](./setting.md)
 
-## Create Firebase project, and get config content
+## References
 
-1. Go to [Firebase](https://firebase.google.com/)
-1. Right top, `Go to console`
-1. Create a project
-   - Named it: "amazon-clone"
-   - Turn off the google analytics(turn on if you want)
-1. Left top `Gear icon` > `Project settings`
-1. At `Add an app to get started`, click the ![web register icon](/public/NOTES/firebase-web-register-icon.png)
-   - Fill up the project name: "amazon-clone"
-   - Keep `Also set up Firebase Hosting for this app.` NOT check
-   - After it done, click `Continue to console`
-1. Then go back to `Project settings`
-   - Scroll down, we'll see the web app we just registered
-   - At `SDK setup and configuration`, click the `Config` radio
-   - Copy the config content, and paste it at `firebase.js`, which we'll create it in the project root folder
+- [Firebase fundamentals](https://firebase.google.com/docs/web/setup?authuser=0&hl=en)
+- [firestore](https://firebase.google.com/docs/firestore/quickstart?hl=en&authuser=0)
 
-## Setting Authentication
+## Q&A
 
-1. On the left pannel > `Build` > `Authentication`
-   - Click `Get started`
-1. At `Additional providers`
-   - Click `Google`, and enable it
-   - Don't forget select the `Project support email`
-   - Click `Save`
-1. After Save is done, go `Authentication` > `Sign-in method` > `Sign-in providers` > `Google` > `Web SDK configuration`
-   - `Web client ID` as `GOOGLE_CLIENT_ID`
-   - `Web client secret` as `GOOGLE_CLIENT_SECRET`. P.S. make it save, don't show anyone :)
-   - copy these two information to `.env.local` in our project
+- [Different between firebase-admin & firebase npm module](https://stackoverflow.com/questions/42958776/whats-the-difference-between-the-firebase-and-the-firebase-admin-npm-module)
+- [Firebase version 9 get document from nested collection](https://stackoverflow.com/questions/70612424/firebase-9-get-single-document-from-nested-collections-react)

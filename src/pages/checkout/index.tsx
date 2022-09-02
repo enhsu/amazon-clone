@@ -5,11 +5,30 @@ import CheckoutProduct from "~/components/CheckoutProduct";
 import Header from "~/components/Header";
 import { selectItems, selectTotal } from "~/store/slices/cartSlice";
 import Currency from "react-currency-formatter";
+import { loadStripe } from "@stripe/stripe-js";
+import axios from "axios";
+
+const stripePromise = loadStripe(process.env.stripe_public_key!);
 
 function Checkout() {
   const items = useSelector(selectItems);
   const total = useSelector(selectTotal);
   const { data: session } = useSession();
+
+  const createCheckoutSession = async () => {
+    const stripe = await stripePromise;
+    // Call backend to create a checkout session
+    const checkoutSession = await axios.post("/api/create-checkout-session", {
+      email: session?.user?.email,
+      items,
+    });
+    // Redirect user to Stripe checkout
+    const result = await stripe?.redirectToCheckout({
+      sessionId: checkoutSession.data.id,
+    });
+
+    if (result && result.error) alert(result.error.message);
+  };
 
   return (
     <div className=" bg-gray-100">
@@ -50,6 +69,8 @@ function Checkout() {
                 </span>
               </h2>
               <button
+                onClick={() => createCheckoutSession()}
+                role="link"
                 disabled={!session}
                 className={`button mt-2 ${
                   !session &&

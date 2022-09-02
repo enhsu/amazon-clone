@@ -8,6 +8,7 @@
 
 - [Enviroment setup](./env-setup/README.md)
 - [Firebase setup](./FIrebase/README.md)
+- [Stripe setup](./Stripe/README.md)
 
 ## Libraries
 

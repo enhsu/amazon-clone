@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "~/store";
 import type { AddProduct } from "~/components/Product";
 
-type Item = AddProduct;
+export type Item = AddProduct;
 
 interface CartState {
   items: Item[];
@@ -21,7 +21,10 @@ export const cartSlice = createSlice({
         const newItems = [...state.items];
         state.items = newItems.map((item) => {
           if (item.id === action.payload.id) {
-            return { ...item, count: item.count + action.payload.count };
+            return {
+              ...item,
+              quantity: item.quantity + action.payload.quantity,
+            };
           }
           return item;
         });
@@ -55,7 +58,7 @@ export const { addToCart, removeFromCart } = cartSlice.actions;
 export const selectItems = (state: RootState) => state.cart.items;
 export const selectTotal = (state: RootState) =>
   state.cart.items.reduce(
-    (total: number, item: Item) => total + item.price * item.count,
+    (total: number, item: Item) => total + item.price * item.quantity,
     0
   );
 

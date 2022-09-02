@@ -11,7 +11,7 @@ type PropsType = AddProduct;
 
 function CheckoutProduct({
   id,
-  count,
+  quantity,
   title,
   price,
   rating,
@@ -20,21 +20,21 @@ function CheckoutProduct({
   image,
   hasPrime,
 }: PropsType) {
-  const [addCount, setAddCount] = useState<number>(0);
+  const [addQuantity, setAddQuantity] = useState<number>(0);
   const dispatch = useDispatch();
 
-  const handleUpdateCount = (val: number) => {
+  const handleUpdateQuantity = (val: number) => {
     if (val <= 0) return;
-    setAddCount(val - count);
+    setAddQuantity(val - quantity);
   };
   const handleInputOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    handleUpdateCount(parseInt(e.target.value));
+    handleUpdateQuantity(parseInt(e.target.value));
   };
 
   const handleUpdateCart = () => {
     const product = {
       id,
-      count: addCount,
+      quantity: addQuantity,
       title,
       price,
       rating,
@@ -44,7 +44,7 @@ function CheckoutProduct({
       hasPrime,
     };
     dispatch(addToCart(product));
-    setAddCount(0);
+    setAddQuantity(0);
   };
   const handleRemoveItemFromCart = () => {
     dispatch(removeFromCart({ id }));
@@ -76,15 +76,19 @@ function CheckoutProduct({
       {/* Right: Add & Remove */}
       <div className=" flex flex-col space-y-2 my-auto justify-self-center">
         <div className=" flex">
-          <div onClick={() => handleUpdateCount(count + addCount - 1)}>-</div>
+          <div onClick={() => handleUpdateQuantity(quantity + addQuantity - 1)}>
+            -
+          </div>
           <input
             type="number"
             className=" flex-grow text-center"
             onChange={(e) => handleInputOnChange(e)}
-            value={count + addCount}
+            value={quantity + addQuantity}
           />
 
-          <div onClick={() => handleUpdateCount(count + addCount + 1)}>+</div>
+          <div onClick={() => handleUpdateQuantity(quantity + addQuantity + 1)}>
+            +
+          </div>
         </div>
         <button onClick={() => handleUpdateCart()} className="button">
           Update Cart

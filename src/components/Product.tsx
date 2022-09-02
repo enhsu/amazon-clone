@@ -25,7 +25,7 @@ export type Product = {
 export type PropsType = Omit<Product, "rating">;
 
 export type AddProduct = PropsType & {
-  count: number;
+  quantity: number;
   rating: number;
   hasPrime: boolean;
 };
@@ -41,7 +41,7 @@ export default function Product({
   category,
   image,
 }: PropsType) {
-  const [count, setCount] = useState<number>(1);
+  const [quantity, setQuantity] = useState<number>(1);
   const [rating, setRating] = useState<number>(0);
   const [hasPrime, setHasPrime] = useState<boolean>(false);
   const dispatch = useDispatch();
@@ -56,7 +56,7 @@ export default function Product({
   const addItemToCart = () => {
     const product = {
       id,
-      count,
+      quantity,
       title,
       price,
       description,
