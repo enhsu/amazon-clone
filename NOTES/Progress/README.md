@@ -76,7 +76,7 @@
 1. Use [Stripe](https://stripe.com/docs) handle the payment
    1. Setup environment variable
       - Login the [Stripe](https://stripe.com/) official website
-      - Select an account, and go to the `Developers` > `API keys`, we get `Publishable key` & `Secret key`
+      - Select an account, and go to the `Developers` > `API keys`, we get `Publishable key` as `STRIPE_PUBLIC_KEY` & `Secret key` as `STRIPE_SECRET_KEY`
       - P.S. The `Developers` category should be on the top right corner(Aug, 2022)
       - Put `Publishable key` in `next.config.js` for the front-end
       - `Secret key` should be in `.env.local file`, keep it secret
