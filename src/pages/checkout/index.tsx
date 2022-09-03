@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useSelector } from "react-redux";
@@ -33,6 +34,9 @@ function Checkout() {
 
   return (
     <div className=" bg-gray-100">
+      <Head>
+        <title>Amazon clone - Cart</title>
+      </Head>
       <Header />
       <main className=" max-w-screen-2xl mx-auto min-h-screen lg:flex">
         {/* Left */}

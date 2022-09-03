@@ -1,5 +1,6 @@
 import { GetServerSideProps } from "next";
 import { getSession, useSession } from "next-auth/react";
+import Head from "next/head";
 import Header from "~/components/Header";
 import Stripe from "stripe";
 import db from "~/utils/db/firebase";
@@ -18,6 +19,9 @@ function Orders({ orders }: PropsType) {
 
   return (
     <div>
+      <Head>
+        <title>Amazon clone - Your orders</title>
+      </Head>
       <Header />
 
       <main className=" max-w-screen-lg mx-auto p-10">

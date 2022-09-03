@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Header from "~/components/Header";
 import { AiFillCheckCircle } from "react-icons/ai";
 import { useRouter } from "next/router";
@@ -12,6 +13,9 @@ function Success() {
 
   return (
     <div className=" bg-green-100">
+      <Head>
+        <title>Amazon clone - payment success</title>
+      </Head>
       <Header />
       <main className=" max-w-screen-lg mx-auto min-h-screen">
         <div className=" flex flex-col p-10 bg-white">
