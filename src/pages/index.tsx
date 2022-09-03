@@ -4,6 +4,7 @@ import Header from "~/components/Header";
 import ProductFeed from "~/components/ProductFeed";
 import type { Product } from "~/components/Product";
 import { GetServerSideProps } from "next";
+import Footer from "~/components/Footer";
 // import { getSession } from "next-auth/react";
 // import { DefaultSession } from "next-auth";
 
@@ -27,6 +28,8 @@ const Home = ({ products }: PropsType) => {
         {/* Products feed */}
         <ProductFeed products={products} />
       </main>
+
+      <Footer />
     </div>
   );
 };

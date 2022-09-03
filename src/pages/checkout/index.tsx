@@ -7,6 +7,7 @@ import { selectItems, selectTotal } from "~/store/slices/cartSlice";
 import Currency from "react-currency-formatter";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
+import Footer from "~/components/Footer";
 
 const stripePromise = loadStripe(process.env.stripe_public_key!);
 
@@ -33,7 +34,7 @@ function Checkout() {
   return (
     <div className=" bg-gray-100">
       <Header />
-      <main className=" max-w-screen-2xl mx-auto lg:flex">
+      <main className=" max-w-screen-2xl mx-auto min-h-screen lg:flex">
         {/* Left */}
         <div className=" flex-grow m-5 shadow-sm">
           {/* Advertisement */}
@@ -83,6 +84,8 @@ function Checkout() {
           )}
         </div>
       </main>
+
+      <Footer />
     </div>
   );
 }

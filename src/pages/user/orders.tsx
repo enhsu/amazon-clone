@@ -7,6 +7,7 @@ import { query, orderBy, limit, collection, getDocs } from "firebase/firestore";
 import moment from "moment";
 import Order from "~/components/Order";
 import type { OrderType } from "~/components/Order";
+import Footer from "~/components/Footer";
 
 type PropsType = {
   orders: OrderType[];
@@ -38,6 +39,8 @@ function Orders({ orders }: PropsType) {
           ))}
         </div>
       </main>
+
+      <Footer />
     </div>
   );
 }
