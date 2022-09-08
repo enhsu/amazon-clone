@@ -6,16 +6,24 @@ by [Next.js](https://nextjs.org/), and bootstrapped with [create-next-app](https
 Products data come from [Fake Store API](https://fakestoreapi.com/)
 
 See [Demo on vercel](https://amazon-clone-enhsu.vercel.app/)
+
 See [Github source code](https://github.com/enhsu/amazon-clone)
 
 ## Functional Parts
 
-- SignIn with `Google` or `Github` account
-- SignOut
+- SignIn with `Google` or `Github` account with `NextAuth` on top right side
+  ![Main](./public/NOTES/Main.png)
+  ![SignIn](./public/NOTES/SignIn.png)
+- SignOut on top right side
+  ![SignOut](./public/NOTES/SignOut.png)
 - Add items to `Cart`
+  ![Cart](./public/NOTES/Cart.png)
 - Payment with [Stripe](https://stripe.com/)
+  ![Payment](./public/NOTES/Stripe_Payment.png)
+  ![Payment Success](./public/NOTES/Payment_Success.png)
   - See test card [here](https://stripe.com/docs/testing?numbers-or-method-or-token=card-numbers#cards)
 - See `Orders` while SignIn
+  ![Orders](./public/NOTES/Orders.png)
 
 ## Tec
 
